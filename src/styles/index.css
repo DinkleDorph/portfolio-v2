@@ -1,17 +1,39 @@
-img {
-  max-width: 200px;
-  max-height: 200px;
+#profile-pic {
+  height: 160px;
   margin-right: 1rem;
+  border-radius: 10px;
 }
 
-#info {
+@media screen and (max-width: 600px) {
+  #profile-pic {
+    height: 140px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #profile-pic {
+    height: 100px;
+  }
+}
+
+#info-container {
   display: flex;
   flex-direction: row;
   margin-bottom: 1rem;
 }
 
-#info div {
+#info-container > div {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+#location {
+  display: flex;
+  align-items: center;
+}
+
+#location img {
+  max-width: 20px;
+  margin-right: 0.5rem;
 }

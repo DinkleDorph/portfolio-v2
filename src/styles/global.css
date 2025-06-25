@@ -28,14 +28,19 @@ body {
 }
 
 section {
-  margin-bottom: 1rem;
+  margin-bottom: 5rem;
 }
 
-footer {
-  width: 100%;
-  outline: 1px black;
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+nav a {
+  padding: 1rem 1rem 3rem 1rem;
+  text-decoration: none;
   color: black;
-  text-align: center;
 }
 
 h1,
@@ -64,19 +69,9 @@ h6 {
   font-size: 0.9rem;
 }
 
-header {
-  margin: 2rem 0;
-}
-
-nav {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.nav-links {
-  display: flex;
-  flex-direction: row;
+footer {
+  width: 100%;
+  outline: 1px black;
+  color: black;
   text-align: center;
 }
