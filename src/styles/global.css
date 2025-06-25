@@ -18,6 +18,13 @@ body {
 #container {
   height: 100vh;
   max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#content-container {
+  flex-grow: 1;
 }
 
 section {
@@ -25,9 +32,6 @@ section {
 }
 
 footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
   width: 100%;
   outline: 1px black;
   color: black;
