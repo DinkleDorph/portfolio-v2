@@ -1,6 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/index.css";
+const allProjects = Object.values(
+  import.meta.glob("./projects/*.md", { eager: true }),
+);
 ---
 
 <BaseLayout pageTitle="Home">
@@ -18,13 +21,37 @@ import "../styles/index.css";
       </div>
     </div>
     <p>
-      Full stack web developer with 3 years of professional experience, based in
-      Halifax, Nova Scotia. I write code to solve problems. I'm goal oriented,
-      and build software with intention and purpose. If you're an employer
-      looking to hire, connect with me here.
+      Full stack web developer with 3+ years of experience building scalable
+      SaaS applications, specializing in backend infrastructure, RESTful API
+      design, and system integrations. Proven experience delivering complete
+      features from database to user interface, with particular strength in
+      complex business logic, subscription systems, and third-party
+      integrations.
     </p>
+    <p>Let's talk and start building. 🚀</p>
+    <div id="links">
+      <a
+        id="resume"
+        href="../../public/Max Morse Resume.pdf"
+        download="Max_Morse_Resume.pdf"
+      >
+        <img src="../../public/pdf.svg" />
+        <p>Resume</p>
+      </a>
+      <a href="https://www.linkedin.com/in/max-morse">LinkedIn</a>
+      <a href="https://github.com/DinkleDorph">GitHub</a>
+    </div>
   </section>
   <section id="recent-projects">
     <h2>Recent Projects</h2>
+    <ul>
+      {
+        allProjects.map((project: any) => {
+          // Extract the filename without extension from the file path
+          const slug = project.file.split("/").pop().replace(/\.md$/, "");
+          return <a href={`/projects/${slug}`}>{project.frontmatter.title}</a>;
+        })
+      }
+    </ul>
   </section>
 </BaseLayout>
