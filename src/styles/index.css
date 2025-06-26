@@ -1,5 +1,6 @@
 #profile-pic {
   height: 160px;
+  width: 160px;
   margin-right: 1rem;
   border-radius: 10px;
 }
@@ -7,12 +8,14 @@
 @media screen and (max-width: 600px) {
   #profile-pic {
     height: 140px;
+    width: 140px;
   }
 }
 
 @media screen and (max-width: 400px) {
   #profile-pic {
     height: 120px;
+    width: 120px;
   }
 }
 

@@ -1,6 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/index.css";
+import { Image } from "astro:assets";
+import profilePic from "../assets/max-2-square.jpg";
+
 const allProjects = Object.values(
   import.meta.glob("./projects/*.md", { eager: true }),
 );
@@ -9,7 +12,7 @@ const allProjects = Object.values(
 <BaseLayout pageTitle="Home">
   <section id="hero">
     <div id="info-container">
-      <img id="profile-pic" src="../../public/max-2-square.jpg" />
+      <Image id="profile-pic" src={profilePic} alt="A candid photo of Max Morse" />
       <div>
         <h1>Max Morse</h1>
         <h5>Full Stack Web Developer</h5>
