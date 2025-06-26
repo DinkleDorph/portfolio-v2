@@ -5,6 +5,7 @@ import { Image } from "astro:assets";
 import profilePic from "../assets/photos/max-2-square.jpg";
 import mapMarker from "../assets/svg/map-marker.svg";
 import pdfIcon from "../assets/svg/pdf.svg";
+import ProjectPreview from "../components/ProjectPreview.astro";
 
 const allProjects = Object.values(
   import.meta.glob("./projects/*.md", { eager: true }),
@@ -51,14 +52,14 @@ const allProjects = Object.values(
       <a href="https://github.com/DinkleDorph">GitHub</a>
     </div>
   </section>
-  <section id="recent-projects">
-    <h2>Recent Projects</h2>
+  <section id="projects">
+    <h2>Projects</h2>
     <ul>
       {
         allProjects.map((project: any) => {
           // Extract the filename without extension from the file path
           const slug = project.file.split("/").pop().replace(/\.md$/, "");
-          return <a href={`/projects/${slug}`}>{project.frontmatter.title}</a>;
+          return <ProjectPreview project={project} slug={slug} />;
         })
       }
     </ul>

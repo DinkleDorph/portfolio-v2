@@ -1,0 +1,57 @@
+---
+import { Image } from "astro:assets";
+const { project, slug } = Astro.props;
+// Get the image URL from the project data
+const images = project.frontmatter?.images;
+const imageUrl = images && images[0] ? images[0].url : null;
+const imageAlt = images && images[0] ? images[0].alt : "Project preview image";
+
+// Import the image dynamically
+let imageComponent;
+
+try {
+  if (imageUrl) {
+    // Use the direct import for the image
+    const imagePath = import.meta.glob(
+      "/src/assets/project-images/*.{jpeg,jpg,png,gif}",
+    );
+
+    // Try with the URL as is
+    let imagePathKey = imageUrl;
+
+    // If the URL doesn't start with a slash but the glob pattern does, add a slash
+    if (
+      !imageUrl.startsWith("/") &&
+      Object.keys(imagePath)[0]?.startsWith("/")
+    ) {
+      imagePathKey = `/${imageUrl}`;
+      console.log("Adjusted image path with leading slash:", imagePathKey);
+    }
+
+    if (imagePath[imagePathKey]) {
+      const importedImage = await imagePath[imagePathKey]();
+      // @ts-ignore - We know this is an image
+      imageComponent = importedImage.default;
+      console.log("Image loaded:", imageComponent);
+    } else {
+      console.log(
+        "Image not found in glob paths. Available paths:",
+        Object.keys(imagePath),
+      );
+    }
+  }
+} catch (error) {
+  console.error("Error loading image:", error);
+}
+---
+
+<a href={`/projects/${slug}`} class="project-preview">
+  {
+    imageComponent && (
+      <Image src={imageComponent} alt={imageAlt} width={400} height={300} />
+    )
+  }
+  <h2>{project.frontmatter?.title}</h2>
+  <p>{project.frontmatter?.description}</p>
+  <p>{project.frontmatter?.tags?.join(", ")}</p>
+</a>
