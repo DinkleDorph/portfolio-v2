@@ -2,7 +2,9 @@
 import "../styles/index.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
-import profilePic from "../assets/images/max-2-square.jpg";
+import profilePic from "../assets/photos/max-2-square.jpg";
+import mapMarker from "../assets/svg/map-marker.svg";
+import pdfIcon from "../assets/svg/pdf.svg";
 
 const allProjects = Object.values(
   import.meta.glob("./projects/*.md", { eager: true }),
@@ -21,7 +23,7 @@ const allProjects = Object.values(
         <h1>Max Morse</h1>
         <h5>Full Stack Web Developer</h5>
         <div id="location">
-          <img src="../../public/map-marker.svg" />
+          <Image id="icon-map-marker" src={mapMarker} alt="Map marker icon" />
           <h6>Halifax, Nova Scotia, Canada 🇨🇦</h6>
         </div>
         <a href="mailto:maxmorse-dev@outlook.com">maxmorse-dev@outlook.com</a>
@@ -42,7 +44,7 @@ const allProjects = Object.values(
         href="../../public/Max Morse Resume.pdf"
         download="Max_Morse_Resume.pdf"
       >
-        <img src="../../public/pdf.svg" />
+        <Image id="icon-pdf" src={pdfIcon} alt="PDF icon" />
         <p>Resume</p>
       </a>
       <a href="https://www.linkedin.com/in/max-morse">LinkedIn</a>

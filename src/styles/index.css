@@ -49,6 +49,7 @@
 }
 
 #location img {
+  max-height: 20px;
   max-width: 20px;
   margin-right: 0.5rem;
   /* filter:url("../../public/map-marker.svg") grayscale(60%); */
@@ -78,6 +79,7 @@
 }
 
 #resume img {
+  max-height: 20px;
   max-width: 20px;
   margin-right: 5px;
 }
