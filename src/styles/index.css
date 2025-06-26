@@ -7,15 +7,22 @@
 
 @media screen and (max-width: 600px) {
   #profile-pic {
-    height: 140px;
-    width: 140px;
+    height: 130px;
+    width: 130px;
   }
 }
 
 @media screen and (max-width: 400px) {
   #profile-pic {
-    height: 120px;
-    width: 120px;
+    height: 110px;
+    width: 110px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  #profile-pic {
+    height: 90px;
+    width: 90px;
   }
 }
 
@@ -49,9 +56,9 @@
 }
 
 #location img {
-  max-height: 20px;
-  max-width: 20px;
-  margin-right: 0.5rem;
+  max-height: 15px;
+  max-width: 15px;
+  margin-right: 5px;
   /* filter:url("../../public/map-marker.svg") grayscale(60%); */
 }
 
