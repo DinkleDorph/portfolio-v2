@@ -5,12 +5,18 @@ const { project, slug } = Astro.props;
 const images = project.frontmatter?.images;
 const imageUrl = images && images[0] ? images[0].url : null;
 const imageAlt = images && images[0] ? images[0].alt : "Project preview image";
+const imageSource = images && images[0] ? images[0].source : "internal";
 
 // Import the image dynamically
 let imageComponent;
 
 try {
   if (imageUrl) {
+    if (imageSource === 'external') {
+      // For external images, use the URL directly
+      imageComponent = imageUrl;
+    }
+
     // Use the direct import for the image
     const imagePath = import.meta.glob(
       "/src/assets/project-images/*.{jpeg,jpg,png,gif}",
@@ -25,19 +31,12 @@ try {
       Object.keys(imagePath)[0]?.startsWith("/")
     ) {
       imagePathKey = `/${imageUrl}`;
-      console.log("Adjusted image path with leading slash:", imagePathKey);
     }
 
     if (imagePath[imagePathKey]) {
       const importedImage = await imagePath[imagePathKey]();
       // @ts-ignore - We know this is an image
       imageComponent = importedImage.default;
-      console.log("Image loaded:", imageComponent);
-    } else {
-      console.log(
-        "Image not found in glob paths. Available paths:",
-        Object.keys(imagePath),
-      );
     }
   }
 } catch (error) {
@@ -51,7 +50,8 @@ try {
       <Image src={imageComponent} alt={imageAlt} width={400} height={300} />
     )
   }
-  <h2>{project.frontmatter?.title}</h2>
+  <h3>{project.frontmatter?.title}</h3>
   <p>{project.frontmatter?.description}</p>
+  <h6>{project.frontmatter?.client}</h6>
   <p>{project.frontmatter?.tags?.join(", ")}</p>
 </a>

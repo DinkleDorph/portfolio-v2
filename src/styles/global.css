@@ -1,7 +1,23 @@
 @import url("reset.css");
 
+@font-face {
+  font-family: 'Roboto';
+  src: url('/public/fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lexend';
+  src: url('/public/fonts/Lexend/Lexend-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 html {
-  font-family: sans-serif;
+  font-family: 'Roboto';
 }
 
 body {
@@ -45,15 +61,20 @@ nav a {
 
 h1,
 h2 {
-  margin-bottom: 1rem;
+  margin-bottom: 20px;
 }
 
 h1 {
-  font-size: 2.25rem;
+  font-size: 2.2rem;
 }
 
 h2 {
-  font-size: 1.75rem;
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
 }
 
 h5,
@@ -71,7 +92,7 @@ h6 {
 
 footer {
   width: 100%;
-  outline: 1px black;
   color: black;
   text-align: center;
+  padding-bottom: 20px;
 }

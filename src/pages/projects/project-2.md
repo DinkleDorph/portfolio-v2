@@ -5,8 +5,9 @@ startDate: 2025-06-25
 endDate: 2025-06-25
 images: [
     {
-        url: 'src/assets/project-images/ekos-integration-page.jpg',
-        alt: 'Kegshoe dashboard showing Ekos integration UI'
+        source: 'external',
+        url: 'https://picsum.photos/400/300',
+        alt: 'Lorum Picsum'
     },
 ]
 tags: ["Subscriptions", "Payments", "Billing", "Stripe"]

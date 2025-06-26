@@ -1,9 +1,10 @@
 ---
 layout: ../../layouts/MarkdownProjectLayout.astro
 title: 'ERP Integration'
-description: 'Led the technical design and implementation of an integration with Ekos, a brewery ERP system, to import and sync resources.'
+description: 'Led the technical design and implementation of an integration with the leading brewery ERP provider to import and sync resources across platforms.'
 startDate: 2025-06-25
 endDate: 2025-06-25
+client: 'Kegshoe'
 images: [
     {
         url: 'src/assets/project-images/ekos-integration-page.jpg',
