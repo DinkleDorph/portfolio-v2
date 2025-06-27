@@ -1,4 +1,4 @@
 ### TODO
-- Project page image carousel
 - About me page content
-- Project page styling
+- See all projects page
+- Add sorting and filtering to projects page

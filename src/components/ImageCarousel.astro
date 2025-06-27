@@ -1,0 +1,125 @@
+---
+import { Image } from "astro:assets";
+
+export interface Props {
+  images: Array<{
+    src: ImageMetadata;
+    alt: string;
+    source?: string;
+  }>;
+}
+
+const { images } = Astro.props;
+---
+
+<div class="carousel-container">
+  <button class="scroll-btn scroll-left" aria-label="Scroll left">
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M15 18L9 12L15 6"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"></path>
+    </svg>
+  </button>
+
+  <div class="carousel-track">
+    {
+      images.map((image) => (
+        <div class="carousel-item">
+          <a
+            href={image.src.src}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Open ${image.alt} in new tab`}
+          >
+            <Image src={image.src} alt={image.alt} />
+          </a>
+        </div>
+      ))
+    }
+  </div>
+
+  <button class="scroll-btn scroll-right" aria-label="Scroll right">
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M9 18L15 12L9 6"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"></path>
+    </svg>
+  </button>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const carouselContainers = document.querySelectorAll(".carousel-container");
+
+    carouselContainers.forEach((container) => {
+      const track = container.querySelector(".carousel-track") as HTMLElement;
+      const leftBtn = container.querySelector(
+        ".scroll-left",
+      ) as HTMLButtonElement;
+      const rightBtn = container.querySelector(
+        ".scroll-right",
+      ) as HTMLButtonElement;
+
+      if (!track || !leftBtn || !rightBtn) return;
+
+      // Calculate scroll distance (80% of container width for partial image visibility)
+      const getScrollDistance = () => track.clientWidth * 0.8;
+
+      // Update button states based on scroll position
+      const updateButtonStates = () => {
+        const isAtStart = track.scrollLeft <= 0;
+        const isAtEnd =
+          track.scrollLeft >= track.scrollWidth - track.clientWidth;
+
+        leftBtn.disabled = isAtStart;
+        rightBtn.disabled = isAtEnd;
+
+        leftBtn.style.opacity = isAtStart ? "0.5" : "1";
+        rightBtn.style.opacity = isAtEnd ? "0.5" : "1";
+      };
+
+      // Scroll left
+      leftBtn.addEventListener("click", () => {
+        track.scrollBy({
+          left: -getScrollDistance(),
+          behavior: "smooth",
+        });
+      });
+
+      // Scroll right
+      rightBtn.addEventListener("click", () => {
+        track.scrollBy({
+          left: getScrollDistance(),
+          behavior: "smooth",
+        });
+      });
+
+      // Update button states on scroll
+      track.addEventListener("scroll", updateButtonStates);
+
+      // Initial button state update
+      updateButtonStates();
+
+      // Update on window resize
+      window.addEventListener("resize", updateButtonStates);
+    });
+  });
+</script>

@@ -50,8 +50,8 @@ try {
       <Image src={imageComponent} alt={imageAlt} width={400} height={300} />
     )
   }
-  <h3>{project.frontmatter?.title}</h3>
-  <p>{project.frontmatter?.description}</p>
-  <h6>{project.frontmatter?.client}</h6>
-  <p>{project.frontmatter?.tags?.join(", ")}</p>
+  {project.frontmatter.title && <h3>{project.frontmatter.title}</h3>}
+  {project.frontmatter.description && <p>{project.frontmatter.description}</p>}
+  {project.frontmatter.client && <h6>{project.frontmatter.client}</h6>}
+  {project.frontmatter.tags && <p>{project.frontmatter?.tags?.join(", ")}</p>}
 </a>

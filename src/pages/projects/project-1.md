@@ -10,6 +10,14 @@ images: [
         url: 'src/assets/project-images/ekos-integration-page.jpg',
         alt: 'Kegshoe dashboard showing ERP integration UI'
     },
+    {
+        url: 'src/assets/project-images/ekos-integration-page.jpg',
+        alt: 'Kegshoe dashboard showing ERP integration UI'
+    },
+    {
+        url: 'src/assets/project-images/ekos-integration-page.jpg',
+        alt: 'Kegshoe dashboard showing ERP integration UI'
+    },
 ]
 tags: ["OAuth", "Integration", "ERP"]
 ---

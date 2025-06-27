@@ -17,17 +17,29 @@
 }
 
 html {
-  font-family: 'Roboto';
+  font-family: 'Lexend';
 }
 
 body {
   margin: 0 auto;
   height: 100vh;
   width: 100%;
-  line-height: 1.2;
+  line-height: 1.3;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: black;
+}
+
+a {
+  color: #4080ff;
+}
+
+p {
+  color: #374151;
 }
 
 #container {
@@ -73,7 +85,7 @@ h2 {
 }
 
 h3 {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   margin-bottom: 5px;
 }
 
