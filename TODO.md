@@ -1,5 +1,5 @@
 ### TODO
-- Project page images not showing on mobile (physical device)
+- Project page images not showing on prod
 - Home page styling broken on firefox mobile
 - About me page image content and styling
 - See all projects page
