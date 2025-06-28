@@ -6,21 +6,34 @@ import ImageCarousel from "../components/ImageCarousel.astro";
 const { frontmatter } = Astro.props;
 
 // Transform frontmatter images to use dynamic imports
+const imagePaths = import.meta.glob(
+  "/src/assets/project-images/*.{jpeg,jpg,png,gif}",
+);
+
 const transformedImages = await Promise.all(
   (frontmatter.images || []).map(async (image: any) => {
     try {
-      // Extract filename from URL and construct asset path
-      const filename = image.url.split("/").pop();
-      const assetPath = `../assets/project-images/${filename}`;
+      let imagePathKey = image.url;
 
-      // Dynamically import the image
-      const importedImage = await import(assetPath);
+      // If the URL doesn't start with a slash but the glob pattern does, add a slash
+      if (
+        !image.url.startsWith("/") &&
+        Object.keys(imagePaths)[0]?.startsWith("/")
+      ) {
+        imagePathKey = `/${image.url}`;
+      }
 
-      return {
-        src: importedImage.default,
-        alt: image.alt,
-        source: image.source,
-      };
+      if (imagePaths[imagePathKey]) {
+        const importedImage = await imagePaths[imagePathKey]();
+        return {
+          src: (importedImage as any).default,
+          alt: image.alt,
+          source: image.source,
+        };
+      } else {
+        console.warn(`Could not find image: ${image.url}`);
+        return null;
+      }
     } catch (error) {
       console.warn(`Could not import image: ${image.url}`, error);
       return null;
