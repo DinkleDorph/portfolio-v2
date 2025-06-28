@@ -1,6 +1,5 @@
 ### TODO
-- Project page images not showing on prod
-- Home page styling broken on firefox mobile
+- Home page styling broken on firefox small screens
 - About me page image content and styling
 - See all projects page
 - Add sorting and filtering to projects page
