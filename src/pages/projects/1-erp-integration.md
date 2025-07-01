@@ -5,21 +5,17 @@ description: 'Led the technical design and implementation of an integration with
 startDate: 2025-06-25
 endDate: 2025-06-25
 client: 'Kegshoe'
+tags: ["OAuth", "Integration", "ERP"]
 images: [
     {
         url: 'src/assets/project-images/ekos-integration-page.jpg',
-        alt: 'Kegshoe dashboard showing ERP integration UI'
+        alt: 'Kegshoe dashboard showing integrations page'
     },
     {
-        url: 'src/assets/project-images/ekos-integration-page.jpg',
-        alt: 'Kegshoe dashboard showing ERP integration UI'
-    },
-    {
-        url: 'src/assets/project-images/ekos-integration-page.jpg',
-        alt: 'Kegshoe dashboard showing ERP integration UI'
+        url: 'src/assets/project-images/ekos-setup.jpg',
+        alt: 'Kegshoe dashboard showing ERP integration setup page'
     },
 ]
-tags: ["OAuth", "Integration", "ERP"]
 ---
 
 ### ERP Integration with Ekos
