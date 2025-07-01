@@ -110,11 +110,16 @@ import reading from "../assets/photos/reading-cropped.jpg";
   }
 
   @media (max-width: 480px) {
+    #personal-container {
+      flex-direction: column;
+      gap: 0px;
+    }
+
     #reading {
-      width: 120px;
-      /* height: 120px;
-      object-fit: cover;
-      object-position: center top; */
+      order: 1;
+      width: auto;
+      height: 160px;
+      align-self: center;
     }
   }
 </style>
