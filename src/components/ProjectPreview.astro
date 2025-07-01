@@ -1,11 +1,13 @@
 ---
 import { Image } from "astro:assets";
 const { project, slug } = Astro.props;
-// Get the image URL from the project data
 const images = project.frontmatter?.images;
 const imageUrl = images && images[0] ? images[0].url : null;
 const imageAlt = images && images[0] ? images[0].alt : "Project preview image";
 const imageSource = images && images[0] ? images[0].source : "internal";
+
+let emoji = null;
+let backgroundColor = null;
 
 // Import the image dynamically
 let imageComponent;
@@ -38,6 +40,9 @@ try {
       // @ts-ignore - We know this is an image
       imageComponent = importedImage.default;
     }
+  } else {
+    emoji = images && images[0] ? images[0].emoji : null;
+    backgroundColor = images && images[0] ? images[0].backgroundColor : null;
   }
 } catch (error) {
   console.error("Error loading image:", error);
@@ -48,6 +53,16 @@ try {
   {
     imageComponent && (
       <Image src={imageComponent} alt={imageAlt} width={400} height={300} />
+    )
+  }
+  {
+    emoji && (
+      <div
+        class="project-emoji-container"
+        style={`background-color: ${backgroundColor || "#f0f0f0"};`}
+      >
+        <span>{emoji}</span>
+      </div>
     )
   }
   {project.frontmatter.title && <h3>{project.frontmatter.title}</h3>}
@@ -88,5 +103,18 @@ try {
   .project-preview p {
     flex-grow: 1;
     margin-bottom: 5px;
+  }
+
+  .project-emoji-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  .project-preview span {
+    font-size: 80px;
   }
 </style>

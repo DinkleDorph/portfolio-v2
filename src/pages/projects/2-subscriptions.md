@@ -1,19 +1,15 @@
 ---
 layout: ../../layouts/MarkdownProjectLayout.astro
 title: 'In-House Subscriptions'
-description: ''
+description: 'Designed and built an in-platform subscription system that decoupled subscriptions from payment providers.'
 startDate: 2025-06-25
 endDate: 2025-06-25
 client: 'Kegshoe'
-tags: ["Subscriptions", "Payments", "Billing", "Stripe"]
+tags: ["Stripe", "Subscriptions", "Payments", "Billing"]
 images: [
-    # {
-    #     url: 'src/assets/project-images/ekos-integration-page.jpg',
-    #     alt: 'Kegshoe dashboard showing ERP integration UI'
-    # },
     {
         emoji: '💳',
-        backgroundColor: '#f0f0f0',
+        backgroundColor: '#f5eaff'
     },
 ]
 ---
