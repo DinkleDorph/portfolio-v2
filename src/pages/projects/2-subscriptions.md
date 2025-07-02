@@ -2,19 +2,17 @@
 layout: ../../layouts/MarkdownProjectLayout.astro
 title: 'In-House Subscriptions'
 description: 'Designed and built an in-platform subscription system that decoupled subscriptions from payment providers.'
-startDate: 2025-06-25
-endDate: 2025-06-25
+year: 2024
 client: 'Kegshoe'
-tags: ["Stripe", "Subscriptions", "Payments", "Billing"]
+tags: ['Stripe', 'Subscriptions', 'Payments', 'Billing']
 images: [
     {
         emoji: '💳',
-        backgroundColor: '#f5eaff'
+        backgroundColor: '#fef7d2'
     },
 ]
 ---
 
-### In-House Subscriptions
 We used to rely on Stripe as the source of truth for customer subscriptions and billing. We had some manually billed customers, but they had to be managed in a hacky way to work around the limitations of the Stripe-based system.
 
 I designed and built a Kegshoe owned subscription system that decoupled payment processing and billing from subscriptions. Subscriptions are properly modelled within Kegshoe. They have payment platform types, which change how the customer's setup flow, subscription management interface, and billing works.
